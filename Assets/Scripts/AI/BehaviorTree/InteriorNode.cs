@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class InteriorNode : BehaviorTree
 {
-    protected List<BehaviorTree> children;
+    public List<BehaviorTree> children; // Changed from protected to public
     protected int current_child;
 
     public InteriorNode(IEnumerable<BehaviorTree> children) : base()
