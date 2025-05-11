@@ -26,8 +26,8 @@ public class BehaviorBuilder
         // Grouping phase (null-safe: if no groupPoint, skip grouping)
         BehaviorTree groupSequence = (groupPoint != null)
             ? new Sequence(new BehaviorTree[] {
-                new GoTo(groupPoint.transform, 1.5f),
-                new NearbyEnemiesQuery(10, 40.0f)
+                new GoTo(groupPoint.transform, 5.0f),
+                new NearbyEnemiesQuery(12, 30.0f)
             })
             : null;
 
