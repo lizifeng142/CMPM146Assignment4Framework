@@ -45,4 +45,16 @@ public class AIWaypointManager
         if (waypoints.Count <= i) return null;
         return waypoints[i];
     }
+
+    public AIWaypoint GetClosestByPrefix(Vector3 point, string prefix)
+{
+    var matches = waypoints.Where(wp => wp.name.StartsWith(prefix)).ToList();
+    if (matches.Count == 0) return null;
+
+    return matches.Aggregate((a, b) =>
+        (a.position - point).sqrMagnitude < (b.position - point).sqrMagnitude ? a : b);
+
+
 }
+}
+

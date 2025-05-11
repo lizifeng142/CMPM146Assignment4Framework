@@ -4,7 +4,7 @@ public class GameFastForward : MonoBehaviour
 {
     [Header("Time Settings")]
     public float normalTimeScale = 1f;
-    public float fastForwardTimeScale = 3f;
+    public float fastForwardTimeScale = 7f;
 
     private bool isFastForwarding = false;
 
