@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
+
 public class AIWaypointManager
 {
     private List<AIWaypoint> waypoints;
@@ -29,16 +30,14 @@ public class AIWaypointManager
 
     public AIWaypoint GetClosest(Vector3 point)
     {
-        return waypoints.Aggregate((a, b) =>
-            (a.position - point).sqrMagnitude < (b.position - point).sqrMagnitude ? a : b);
+        return waypoints.Aggregate((a, b) => (a.position - point).sqrMagnitude < (b.position - point).sqrMagnitude ? a : b);
     }
 
     public AIWaypoint GetClosestByType(Vector3 point, AIWaypoint.Type type)
     {
         var of_type = waypoints.FindAll((a) => a.type == type);
         if (of_type.Count == 0) return null;
-        return of_type.Aggregate((a, b) =>
-            (a.position - point).sqrMagnitude < (b.position - point).sqrMagnitude ? a : b);
+        return of_type.Aggregate((a, b) => (a.position - point).sqrMagnitude < (b.position - point).sqrMagnitude ? a : b);
     }
 
     public AIWaypoint Get(int i)
@@ -46,18 +45,4 @@ public class AIWaypointManager
         if (waypoints.Count <= i) return null;
         return waypoints[i];
     }
-
-    public AIWaypoint GetByName(string name)
-    {
-        return waypoints.Find(wp => wp.name == name);
-    }
-
-    public AIWaypoint GetClosestByPrefix(Vector3 position, string prefix)
-{
-    var matches = waypoints.FindAll(wp => wp.name.StartsWith(prefix));
-    if (matches.Count == 0) return null;
-    return matches.Aggregate((a, b) =>
-        (a.position - position).sqrMagnitude < (b.position - position).sqrMagnitude ? a : b);
-}
-
 }

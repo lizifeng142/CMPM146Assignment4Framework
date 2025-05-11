@@ -42,4 +42,3 @@ public class GoTowards : BehaviorTree
         return new GoTowards(target, distance, arrived_distance);
     }
 }
-
